@@ -1,59 +1,39 @@
-# UrgeGuard 🔐
-(Early stage development) 
-> A biometric-aware panic button mobile app for addiction recovery.
+# UrgeGuard — Setup Guide
 
----
+## Running in GitHub Codespaces
 
-## 📱 About
+1. Open this repo in Codespaces
+2. In the terminal run:
+   ```
+   npm install
+   npx expo start --tunnel
+   ```
+3. Scan the QR code with Expo Go on your Android phone
 
-UrgeGuard helps people in addiction recovery manage urges in real time. It combines a manual panic button with passive biometric monitoring via wearables to detect urges before they escalate — then guides the user through breathing and grounding interventions.
+## Project Structure
 
----
-
-## ✨ Features
-
-- 🚨 **Panic Button** — One-tap emergency support trigger
-- 📊 **Passive Biometric Detection** — Detects urge patterns via wearable data (heart rate, HRV)
-- 🧘 **Interventions** — Guided breathing and grounding exercises
-- 👥 **Accountability Partners** — Instant notifications sent to trusted contacts
-- 🔒 **App Locking** — Blocks trigger apps during high-risk moments (Android)
-
----
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | React Native (Expo) |
-| Backend | Firebase |
-| Notifications | Firebase Cloud Messaging |
-| Health Data | Google Health Connect / Apple HealthKit |
-| App Locking | Android Accessibility Services API |
-
----
-
-## 🚀 Getting Started
-
-```bash
-# Clone the repo
-git clone https://github.com/GeniusHTH/UrgeGuard.git
-
-# Install dependencies
-npm install
-
-# Start the app
-npx expo start
+```
+UrgeGuard/
+├── App.js                        # Navigation & notification setup
+├── package.json                  # Dependencies
+├── screens/
+│   ├── HomeScreen.jsx            # Main screen with panic button
+│   ├── BreathingScreen.jsx       # Box breathing + 5-4-3-2-1 grounding
+│   ├── AppBlockerScreen.jsx      # App blacklist management
+│   └── AccountabilityScreen.jsx  # Emergency contact setup
+├── services/
+│   └── storage.js                # Local AsyncStorage (no Firebase needed)
+└── android/
+    └── app/src/main/
+        ├── java/com/urgeguard/
+        │   └── AppBlockerService.kt        # Kotlin accessibility service
+        └── res/xml/
+            └── accessibility_service_config.xml
 ```
 
----
+## Notes
 
-## 📌 Status
-
-🟡 **In Development** — Final Year Project @ KNUST
-
----
-
-## 👨‍💻 Author
-
-**Godsmark Austin**  
-[github.com/GeniusHTH](https://github.com/GeniusHTH) · [geniushth.github.io](https://geniushth.github.io)
+- No Firebase required — all data is saved locally with AsyncStorage
+- Heart rate monitoring is simulated (Expo cannot access real HR sensors)
+- The Kotlin AppBlockerService only works in a full Android build, not Expo Go
+- To enable app blocking in production, register the service in AndroidManifest.xml
