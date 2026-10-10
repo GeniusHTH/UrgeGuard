@@ -1,0 +1,6 @@
+{
+  "name": "UrgeGuard",
+  "description": "A calm, minimal panic button and box breathing recovery companion for Android built with React Native and Expo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

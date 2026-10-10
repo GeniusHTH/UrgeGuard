@@ -1,0 +1,10 @@
+// Polyfill global for React Native Web timing animations
+if (typeof window !== 'undefined' && typeof (window as any).global === 'undefined') {
+  (window as any).global = window;
+}
+
+import {createRoot} from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+
+createRoot(document.getElementById('root')!).render(<App />);
