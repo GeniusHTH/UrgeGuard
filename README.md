@@ -20,7 +20,7 @@ I went through an addiction phase myself and know how hard it is to stop. I buil
 - App blocking through Android Accessibility Services
 - Move to a real Android app (React Native with Expo)
 
-## How it was made
+## About this project
 The idea, features and direction are mine. It's an early prototype that I'm building piece by piece and learning as I go.
 
 ## Tech
